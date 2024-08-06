@@ -1,10 +1,14 @@
 part of 'blog_bloc.dart';
 
-class BlogState {
-  List<BlogModel> blogs = [];
-  BlogState({required this.blogs});
+class BlogState {}
+
+class BlogInitial extends BlogState {}
+
+class BlogLoad extends BlogState {}
+
+class BlogDone extends BlogState {
+  BlogModel blogs;
+  BlogDone(this.blogs);
 }
 
-final class BlogInitial extends BlogState {
-  BlogInitial() : super(blogs: []);
-}
+class BlogError extends BlogState {}

@@ -11,7 +11,7 @@ class BlogModel {
   });
 
   factory BlogModel.fromJson(Map<String, dynamic> json) => BlogModel(
-        blogs: List<Blog>.from(json["blogs"].map((x) => Blog.fromJson(x))),
+        blogs: List<Blog>.from(json["blogs"].map((val) => Blog.fromJson(val))),
       );
 }
 
