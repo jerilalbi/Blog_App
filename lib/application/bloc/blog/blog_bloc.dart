@@ -11,7 +11,6 @@ class BlogBloc extends Bloc<BlogEvent, BlogState> {
       emit(BlogLoad());
       try {
         BlogModel blog = await fetchBlogData();
-        print(blog.blogs.length);
         emit(BlogDone(blog));
       } catch (e) {
         emit(BlogError());
