@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:blog_app/application/bloc/connectivity/connectivity_bloc.dart';
 import 'package:blog_app/domain/models/BlogModel.dart';
 import 'package:blog_app/infrastructure/repository/blog_repo.dart';
-import 'package:blog_app/infrastructure/repository/connectivity_service.dart';
 
 part 'blog_event.dart';
 part 'blog_state.dart';

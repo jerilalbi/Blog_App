@@ -2,6 +2,7 @@ import 'package:blog_app/application/bloc/blog/blog_bloc.dart';
 import 'package:blog_app/application/bloc/connectivity/connectivity_bloc.dart';
 import 'package:blog_app/infrastructure/repository/connectivity_service.dart';
 import 'package:blog_app/presentation/Widgets/AppBarTitle.dart';
+import 'package:blog_app/presentation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,8 +26,7 @@ class HomePage extends StatelessWidget {
               size: 30,
             ),
             onPressed: () {
-              // getBlogsDataLocal();
-              print(ConnectivityService.instance.isOnline);
+              Navigator.pushNamed(context, AppRouter.favouritePage);
             },
           )
         ],
@@ -41,14 +41,18 @@ class HomePage extends StatelessWidget {
           return ListView.builder(
               itemCount: state.blogs.blogs.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  leading: Image.network(
-                    state.blogs.blogs[index].imageUrl,
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) =>
-                        Image.asset("assets/images/img_place.jpeg"),
+                return GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, AppRouter.blogPage,
+                      arguments: state.blogs.blogs[index]),
+                  child: ListTile(
+                    leading: Image.network(
+                      state.blogs.blogs[index].imageUrl,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) =>
+                          Image.asset("assets/images/img_place.jpeg"),
+                    ),
+                    title: Text(state.blogs.blogs[index].title),
                   ),
-                  title: Text(state.blogs.blogs[index].title),
                 );
               });
         } else {
