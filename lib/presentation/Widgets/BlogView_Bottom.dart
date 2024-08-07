@@ -26,7 +26,9 @@ class _BlogViewBottmState extends State<BlogViewBottm> {
     isFavAdded = checkFavourite(widget.blog.id);
     flutterTts = FlutterTts();
     flutterTts!.setCompletionHandler(() {
-      isSpeaking = false;
+      setState(() {
+        isSpeaking = false;
+      });
     });
     setState(() {});
   }
@@ -66,7 +68,7 @@ class _BlogViewBottmState extends State<BlogViewBottm> {
                 }
                 setState(() {});
               },
-              child: RoundFavBtn(
+              child: RoundBtn(
                 icon: isFavAdded ? Icons.favorite : Icons.favorite_border,
               ),
             ),

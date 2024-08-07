@@ -1,6 +1,7 @@
 import 'package:blog_app/core/constants.dart';
 import 'package:blog_app/domain/models/BlogModel.dart';
 import 'package:blog_app/presentation/Widgets/BlogView_Bottom.dart';
+import 'package:blog_app/presentation/Widgets/RoundBtn.dart';
 import 'package:flutter/material.dart';
 
 class BlogviewPage extends StatelessWidget {
@@ -9,6 +10,7 @@ class BlogviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ValueNotifier<bool> isDarkMode = ValueNotifier(false);
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -28,33 +30,46 @@ class BlogviewPage extends StatelessWidget {
             left: 0,
             right: 0,
             bottom: 0,
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25),
-                      topRight: Radius.circular(25)),
-                  color: Colors.white),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Text(
-                      "This is a dummy article of title: " +
-                          blog.title +
-                          demoArticle,
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.w500),
+            child: ValueListenableBuilder(
+                valueListenable: isDarkMode,
+                builder: (context, bool value, child) {
+                  return Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(25),
+                            topRight: Radius.circular(25)),
+                        color: value ? Colors.black : Colors.white),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          Text(
+                            "This is a dummy article of title: ${blog.title} $demoArticle",
+                            style: TextStyle(
+                                color: value ? Colors.white : Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500),
+                          ),
+                          const SizedBox(
+                            height: 100,
+                          ),
+                        ],
+                      ),
                     ),
-                    const SizedBox(
-                      height: 100,
-                    )
-                  ],
-                ),
-              ),
-            ),
+                  );
+                }),
           ),
           BlogViewBottm(
             blog: blog,
+          ),
+          Positioned(
+            right: 15,
+            top: 25,
+            child: GestureDetector(
+                onTap: () {
+                  isDarkMode.value = !isDarkMode.value;
+                },
+                child: const RoundBtn(icon: Icons.remove_red_eye)),
           )
         ],
       ),
