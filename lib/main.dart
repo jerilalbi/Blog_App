@@ -1,12 +1,15 @@
 import 'package:blog_app/application/bloc/bloc_providers.dart';
+import 'package:blog_app/infrastructure/data_sources/Hive_DataSource.dart';
 import 'package:blog_app/presentation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  final hiveDataSource = HiveDatasource();
+  await hiveDataSource.initHive();
   runApp(MultiBlocProvider(providers: blocProviders, child: const MyApp()));
 }
 

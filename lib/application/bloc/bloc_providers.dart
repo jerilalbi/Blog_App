@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 final blocProviders = [
-  BlocProvider<BlogBloc>(
-      create: (BuildContext context) => BlogBloc()..add(FetchBlogs())),
   BlocProvider<ConnectivityBloc>(
       create: (BuildContext context) =>
-          ConnectivityBloc()..add(CheckConnectivity()))
+          ConnectivityBloc()..add(CheckConnectivity())),
+  BlocProvider<BlogBloc>(
+      create: (BuildContext context) => BlogBloc()..add(FetchBlogs())),
 ];

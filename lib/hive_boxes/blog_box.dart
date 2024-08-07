@@ -1,9 +1,11 @@
 import 'package:hive/hive.dart';
 
+part 'blog_box.g.dart';
+
 @HiveType(typeId: 0)
-class Blogs extends HiveObject {
+class BlogsBox extends HiveObject {
   @HiveField(0)
   final String? jsonBlogsData;
 
-  Blogs({this.jsonBlogsData});
+  BlogsBox({this.jsonBlogsData});
 }

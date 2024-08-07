@@ -1,6 +1,6 @@
 import 'package:blog_app/application/bloc/blog/blog_bloc.dart';
 import 'package:blog_app/application/bloc/connectivity/connectivity_bloc.dart';
-import 'package:blog_app/core/constants.dart';
+import 'package:blog_app/infrastructure/repository/connectivity_service.dart';
 import 'package:blog_app/presentation/Widgets/AppBarTitle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,7 +25,8 @@ class HomePage extends StatelessWidget {
               size: 30,
             ),
             onPressed: () {
-              print("connectivity = ${context.read<ConnectivityBloc>().state}");
+              // getBlogsDataLocal();
+              print(ConnectivityService.instance.isOnline);
             },
           )
         ],
@@ -42,7 +43,11 @@ class HomePage extends StatelessWidget {
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: Image.network(
-                      state.blogs.blogs[index].imageUrl ?? imagePlaceHold),
+                    state.blogs.blogs[index].imageUrl,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) =>
+                        Image.asset("assets/images/img_place.jpeg"),
+                  ),
                   title: Text(state.blogs.blogs[index].title),
                 );
               });
