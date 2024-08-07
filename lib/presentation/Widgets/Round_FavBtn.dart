@@ -1,3 +1,4 @@
+import 'package:blog_app/core/colors.dart';
 import 'package:flutter/material.dart';
 
 class RoundFavBtn extends StatelessWidget {
@@ -10,7 +11,7 @@ class RoundFavBtn extends StatelessWidget {
         height: 60,
         width: 60,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50), color: Colors.blue),
+            borderRadius: BorderRadius.circular(50), color: secondaryColor),
         child: Icon(
           icon,
           size: 30,

@@ -1,3 +1,4 @@
+import 'package:blog_app/core/colors.dart';
 import 'package:flutter/material.dart';
 
 class ListenBtn extends StatelessWidget {
@@ -11,7 +12,7 @@ class ListenBtn extends StatelessWidget {
       width: 200,
       height: 60,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15), color: Colors.blue),
+          borderRadius: BorderRadius.circular(15), color: secondaryColor),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
