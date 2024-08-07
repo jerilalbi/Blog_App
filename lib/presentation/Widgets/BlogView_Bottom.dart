@@ -2,7 +2,7 @@ import 'package:blog_app/core/constants.dart';
 import 'package:blog_app/domain/models/BlogModel.dart';
 import 'package:blog_app/infrastructure/repository/hive_repo.dart';
 import 'package:blog_app/presentation/Widgets/ListenBtn.dart';
-import 'package:blog_app/presentation/Widgets/Round_FavBtn.dart';
+import 'package:blog_app/presentation/Widgets/RoundBtn.dart';
 import 'package:blog_app/presentation/Widgets/ToastMsg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
